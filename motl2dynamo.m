@@ -2,7 +2,7 @@
 
 %USER INPUT SECTION
 
-pick_particle='y'; %Did you use the Chimera Pick Particle plug in to generate coordinates? If so, enter 'y' here. If not (i.e. you used the irregular membrane picking protocol), enter 'n'. However, if the pixel size of the tomogram you used to pick particles is 1 (check by typing: header [tomogram_name]), you should enter 'y'. 
+pick_particle='y'; %Did you use the Chimera Pick Particle plug in to generate coordinates? If so, enter 'y' here. However, if the pixel size of the tomogram you used to pick particles is 1 you should enter 'n'. If you did not use Pick Particle (i.e. you used the irregular membrane picking protocol), enter 'n'. 
 
 pixel_size=10.632; %Enter the pixel size of the tomograms you used to pick particles
 
