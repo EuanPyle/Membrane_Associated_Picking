@@ -2,7 +2,7 @@
 
 %USER INPUT SECTION
 
-pick_particle='y'; %Did you use the Chimera Pick Particle plug in to generate coordinates? If so, enter 'y' here. If not (i.e. you used the irregular membrane picking protocol), enter 'n'. 
+pick_particle='y'; %Did you use the Chimera Pick Particle plug in to generate coordinates? If so, enter 'y' here. If not (i.e. you used the irregular membrane picking protocol), enter 'n'. However, if the pixel size of the tomogram you used to pick particles is 1 (check by typing: header [tomogram_name]), you should enter 'y'. 
 
 pixel_size=10.632; %Enter the pixel size of the tomograms you used to pick particles
 
@@ -30,4 +30,6 @@ for i = 1:length(list_names) % This loops through all the files
     end
     dwrite(table,['TS_' tomon '_object_' tuben '.tbl']); %Saving as .tbl
 end
+
+disp('Check the Dynamo table coordinates (columns 24 to 26 in XYZ) match the positions of particles you selected in the tomograms.')
 
