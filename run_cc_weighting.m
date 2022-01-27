@@ -3,7 +3,7 @@
 
 %Run this script in the directory containing all the initial_align_TS_X_object_X directories. 
 
-addpath(genpath('../../tomo_functions')); %Provide the path to the tomo_functions folder 
+addpath(genpath('./tomo_functions')); %Provide the path to the tomo_functions folder 
 
 iteration_no=1; %If you ran Dynamo alignment for more than 1 iteration, enter the number of iterations you ran here, otherwise leave as 1
 

@@ -2,6 +2,10 @@
 
 %USER INPUT SECTION
 
+pick_particle='y'; %Did you use the Chimera Pick Particle plug in to generate coordinates? If so, enter 'y' here. If not (i.e. you used the irregular membrane picking protocol), enter 'n'. 
+
+pixel_size=10.632; %Enter the pixel size of the tomograms you used to pick particles
+
 %Check the line below will correctly read all the .em files in this directory. Run this in initial_alignments directory. 
 
 list=dir('TS_*_object_*.em'); % This line tells MatLab to look inside all files with this naming convention
@@ -21,6 +25,9 @@ for i = 1:length(list_names) % This loops through all the files
     table=dynamo__motl2table(motl); % Converting to table
     table(:,20)=str2num(tomon); %Entering tomogram number into table
     table(:,21)=str2num(tuben); %Entering object number into table
+    if pick_particle=='y'
+    table(:,24:26)=(table(:,24:26)./pixel_size);
+    end
     dwrite(table,['TS_' tomon '_object_' tuben '.tbl']); %Saving as .tbl
 end
 
