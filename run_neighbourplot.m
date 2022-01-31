@@ -31,12 +31,13 @@ for i = 1:length(list)
     tuben=list{1,i}; 
     tuben=char(extractAfter(tuben,'object_')); % Here, MatLab is extracting the object number from the directory name
 
-    
+    if isfile(['initial_align_TS_' tomon '_object_' tuben '/results/ite_000' num2str(iteration_no) '/averages/' table_name])
     tb=dread(['initial_align_TS_' tomon '_object_' tuben '/results/ite_000' num2str(iteration_no) '/averages/' table_name]);
     
     [neighbourPlot,tags,pairs,table_select,table_exclude] = plot_neighbours(tb,max_distance,min_distance,plot_size,ones(plot_size,plot_size,plot_size));
     
     neighb_all=neighb_all+neighbourPlot;
+end
 end
 
 dwrite(neighb_all,'all_neighbour.em');
