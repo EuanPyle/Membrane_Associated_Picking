@@ -6,6 +6,7 @@
 
 tomo_x=720; %Enter your tomogram dimensions in the X dimension
 tomo_y=512; %Enter your tomogram dimensions in the Y dimension
+tomo_z=375; %Enter your tomogram dimensions in the Z dimension
 
 box_size=32; %Enter the desired box size of your subtomograms (for the the tomogram you are extracting particles from)
 
@@ -37,8 +38,8 @@ initial_table(:,15) = max_tilt;
 initial_table(:,13) = 1; % ftype
 	
 % Following lines Get rid overflowing particles that cause dtcrop to be out of bounds
-initial_table(initial_table(:,24) < crop_pixel,:) = []; initial_table(initial_table(:,25) < crop_pixel,:) = []; 
-initial_table(initial_table(:,24) > (tomo_x-crop_pixel),:) = []; initial_table(initial_table(:,25) > (tomo_y-crop_pixel),:) = [];
+initial_table(initial_table(:,24) < crop_pixel,:) = []; initial_table(initial_table(:,25) < crop_pixel,:) = []; initial_table(initial_table(:,26) < crop_pixel,:) = [];
+initial_table(initial_table(:,24) > (tomo_x-crop_pixel),:) = []; initial_table(initial_table(:,25) > (tomo_y-crop_pixel),:) = []; initial_table(initial_table(:,26) > (tomo_z-crop_pixel),:) = [];
 
 %Extracts particles in table	
 dynamo_table_crop([path_to_tomograms '/TS_' tomon '.mrc'],initial_table,[path_to_initial_particles '/TS_' tomon '_object_' tuben],box_size,'maxMb',1500,'allow_padding',true,'inmemory',true) %If you are not using the requested tomogram naming convention, rename the first argument in this function.
